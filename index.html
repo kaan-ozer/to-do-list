@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- My CSS File -->
-    <link rel="stylesheet" href="assets/CSS/style.css" />
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
@@ -14,6 +12,9 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+
+    <!-- My CSS File -->
+    <link rel="stylesheet" href="assets/CSS/style.css" />
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -40,53 +41,75 @@
     <title>Pomodoro</title>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="bg col-md-12 col-lg-8">
-          <div class="my-modal">
-            <div class="todoList">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="icon-bars"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-
-              <div class="todoList-settings">
-                <div class="plus-icon-div border rounded-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div
+          class="col-11 col-sm-10 col-md-8 col-lg-5 d-flex align-items-center"
+          style="height: 100vh"
+        >
+          <div class="card my-card-styles" style="width: 100%">
+            <div class="card-body p-5">
+              <!-- card exit -->
+              <div class="row mb-5">
+                <div class="col-12">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="plus-icon"
+                    class="icon-bars"
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M12 4.5v15m7.5-7.5h-15"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                     />
                   </svg>
+                </div>
+              </div>
+              <!-- pomodoros -->
+              <div class="row mb-5 pomodoro-area-adjustment">
+                <div class="col-12">
+                  <h5 class="card-title mb-3">SET YOUR POMODOROS</h5>
+                  <ul id="pomodoroList">
+                    <li>
+                      <p class="card-text">Let's learn new things.</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- add button -->
+              <div class="row">
+                <div class="col-12">
+                  <a
+                    class="plus-icon-anchor btn p-1 border rounded-5 text-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="plus-icon"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 4.5v15m7.5-7.5h-15"
+                      />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-2"></div>
       </div>
     </div>
-    <!-- test -->
 
+    <!-- test -->
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
@@ -95,6 +118,6 @@
     ></script>
 
     <!-- My JS file -->
-    <script src="assets/JavaScript/script.js"></script>
+    <script src="assets/JS/script.js"></script>
   </body>
 </html>

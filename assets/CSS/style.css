@@ -21,26 +21,25 @@ body {
   position: relative;
 }
 
-.my-modal {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 600px;
-  width: 400px;
+::-webkit-scrollbar {
+  width: 2px;
+  opacity: 0.5;
+}
 
-  background-color: #fff;
+::-webkit-scrollbar-thumb {
+  background-color: #c471f5;
+  opacity: 1;
+}
+
+.my-card-styles {
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.27);
   border-radius: 12px;
 }
-
-.todoList-settings {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 50px;
+.pomodoro-area-adjustment {
+  height: 16rem;
+  overflow: auto;
 }
+
 .todoList {
   position: relative;
   height: 600px;
@@ -49,6 +48,8 @@ body {
 
 .plus-icon {
   stroke: #fff;
+  width: 32px;
+  height: 32px;
 }
 
 .icon-bars {
@@ -60,17 +61,8 @@ body {
   height: 32px;
 }
 
-.plus-icon-div {
-  position: absolute;
-  bottom: 20px;
-  right: 50%;
-  transform: translate(50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.plus-icon-anchor {
+  display: block;
   border: 3px solid black;
   background-color: #b197fc;
-  padding: 3px 6px;
-  width: 48px;
-  height: 48px;
 }
