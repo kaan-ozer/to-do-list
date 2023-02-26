@@ -38,16 +38,16 @@
       rel="stylesheet"
     />
 
-    <title>Pomodoro</title>
+    <title>To-Do-List</title>
   </head>
   <body>
     <div class="container">
       <div class="row justify-content-center">
         <div
-          class="col-11 col-sm-10 col-md-8 col-lg-5 d-flex align-items-center"
+          class="col-11 col-sm-10 col-md-8 col-lg-4 d-flex align-items-center"
           style="height: 100vh"
         >
-          <div class="card my-card-styles" style="width: 100%">
+          <div class="card my-card-styles">
             <div class="card-body p-5">
               <!-- card exit -->
               <div class="row mb-5">
@@ -68,13 +68,20 @@
                   </svg>
                 </div>
               </div>
-              <!-- pomodoros -->
-              <div class="row mb-5 pomodoro-area-adjustment">
+              <!-- To-Do -->
+              <div class="row mb-5 todo-area-adjustment">
                 <div class="col-12">
-                  <h5 class="card-title mb-3">SET YOUR POMODOROS</h5>
-                  <ul id="pomodoroList">
-                    <li>
-                      <p class="card-text">Let's learn new things.</p>
+                  <h5 class="card-title mb-5 fw-bold" style="color: #c471f5">
+                    SET YOUR TO-DO
+                  </h5>
+                  <ul id="todoList" class="ps-0">
+                    <li class="mb-4">
+                      <input
+                        type="text"
+                        class="p-2"
+                        id="todoInput"
+                        placeholder="Write Here"
+                      />
                     </li>
                   </ul>
                 </div>
@@ -82,9 +89,9 @@
 
               <!-- add button -->
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 text-center">
                   <a
-                    class="plus-icon-anchor btn p-1 border rounded-5 text-center"
+                    class="plus-icon-anchor btn p-1 p-md-3 border rounded-pill text-center"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
