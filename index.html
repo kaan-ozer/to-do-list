@@ -40,7 +40,7 @@
 
     <title>To-Do-List</title>
   </head>
-  <body>
+  <body onload="localStorageUpload()">
     <div class="container">
       <div class="row justify-content-center">
         <div
@@ -79,7 +79,7 @@
                       <input
                         type="text"
                         class="p-2"
-                        id="todoInput"
+                        id="todoAddArea"
                         placeholder="Write Here"
                       />
                     </li>
