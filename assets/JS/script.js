@@ -1,49 +1,54 @@
 "use strict";
 
+//It includes todo's ids
 let todoIds = [];
-// todoIds.push("banana", "apple", "peach");
-//Ekleme Butonu
+
+//Add button
 let addBtn = document.querySelector(".plus-icon-anchor");
-//todoların oldugu liste
+
+//The list which includes todos
 let todoList = document.querySelector("#todoList");
-//todo ekleme input alanı
+
+//Input area for adding todos
 let todoAddArea = document.querySelector("#todoAddArea");
 
 //Icons
 let trashIcon = `<svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#c471f5" class="bi bi-trash-fill" viewBox="0 0 16 16">
 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
 </svg>`;
-let rightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#c471f5" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+let rightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#c471f5" class="bi bi-arrow-right-circle-fill me-2" viewBox="0 0 16 16">
 <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
 </svg>`;
 
-//ekle butonuna ('click') tiklandiginda addTodo() fonksiyonu  calissin
+//If you click the add btn, addTodo() function will be started.
 addBtn.addEventListener("click", addTodo);
 
-//ekleme alanında entere basıldığında addTodo() fonksiyonu  calissin
+//If you press enter key, addTodo() function will be called.
 todoAddArea.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    // Enter tuşuna basılırsa
+    // If you press enter key.
     addTodo();
-    // addTodo() isimli fonksiyonu çağırın
+    // addTodo() function will be called.
   }
 });
 
+//Creates id.
 function idGenerator() {
   return Math.random().toString(16).slice(2);
 }
 
-// add butonu calistiginda yada ekleme alanında enter tuslandiginda
+//That function adds todos.
 function addTodo() {
-  //input alanı bos degilse
+  //If input area is not empty.
   if (todoAddArea.value) {
-    // liste içine li elemani olustur
+    // Create li element.
     const todoLi = document.createElement("li");
-    // to do icerigini gir
+    // Create paragraph to get information is related to todos
     const todoParagraph = document.createElement("p");
-    // to do trash button olustur
+    // Create Anchor for trash btn
     const todoAnchor = document.createElement("a");
 
+    // Add styles via classes of bootstrap.
     todoLi.classList.add(
       "mb-3",
       "d-flex",
@@ -53,89 +58,83 @@ function addTodo() {
     todoParagraph.classList.add("m-0");
     todoAnchor.classList.add("trash-btn");
 
-    //her todo trash tusuna basildiginda delFunc calissin
+    //If you click trash icon, delFunc(this) will be called.
     todoAnchor.setAttribute("onclick", "delFunc(this)");
 
-    //listenin sonuna bu yeni elemani ekle
+    //Add li into ul.
     todoList.append(todoLi);
-    //bu yeni li elemanının içine icerigi belirtmek icin paragraph ekle
+    //Add paragraph into li
     todoLi.append(todoParagraph);
-    //icerik paragrafı sonrası silme butonunu ekle
+    //Add anchor(trash-btn) into li
     todoLi.append(todoAnchor);
 
-    // inputun içine yazılan degeri bu li icindeki paragraph elemanına yazdir
+    //Add the value of the input into the paragraph.
     todoParagraph.innerHTML = rightIcon + " " + todoAddArea.value;
 
-    //anchor a trash icon ekle
+    //Add trash icon into the anchor.
     todoAnchor.innerHTML = trashIcon;
 
-    // input alanını temizle
+    //Clear the input field.
     todoAddArea.value = "";
 
-    //this item's unique id
+    //Create a id.
     let id = idGenerator();
 
+    //Add this id to new li elements
     todoLi.setAttribute("id", id);
 
-    //add this id to the array
+    //Add this id to the array
     todoIds.push(id);
 
+    //Convert the array into json to save later in localstoreage.
     let jsonSaveArray = JSON.stringify(todoIds);
-    //bu listeyi her zaman güncelleyecegiz ve local storeage in ustunde tutacagız
+
+    //Add this array to local storeage.
     localStorage.setItem("IdList", jsonSaveArray);
 
-    // li'nin HTML icerigini localStorage'a kaydedin
+    //Add li element's inner html to localstoreage.
     localStorage.setItem(id, todoLi.innerHTML);
   }
 }
 
-// trash icon a tıklandıgında calısan silme methodu
+// Deletion function
 function delFunc(element) {
-  // tiklanan <a> etiketinin parent node'unu alarak li elemanına erisin
+  // We can reach the parent element(li) of the a element which is clicked.
   const parent = element.parentNode;
-
+  // Get its id.
   let removedId = parent.id;
-  console.log(removedId);
+  // Get its index.
   let removedItemIndex = todoIds.indexOf(removedId);
-  console.log(removedItemIndex);
 
+  // Del from localstoreage.
   localStorage.removeItem(removedId);
+  // Del from the array.
   todoIds.splice(removedItemIndex, 1);
 
-  // console.log(
-  //   `silmeden önce
-  //   index: ${removedItemIndex}
-  //   id ${removedId}
-  //   array ${todoIds}`
-  // );
-
-  // console.log(
-  //   `silmeden sonra
-  //   index: ${removedItemIndex}
-  //   id ${removedId}
-  //   array ${todoIds}`
-  // );
-
+  // Convert our array into json format.
   let jsonSaveArray = JSON.stringify(todoIds);
-  //bu listeyi her zaman güncelleyecegiz ve local storeage in ustunde tutacagız
+  // Update the localstoreage.
   localStorage.setItem("IdList", jsonSaveArray);
 
-  // li'yi kaldirin
+  // Remove li element.
   parent.remove();
 }
 
-//body yuklendiginde localstoragedaki onceki todo'lar yuklensin
+//This function uploads previous todos.
 function localStorageUpload() {
+  // Get the array list which holds the ids from the localstoreage.
   const ourSaveArray = JSON.parse(localStorage.getItem(`IdList`));
-  let i = 0;
 
+  let i = 0;
+  // If our array has any element.
   if (ourSaveArray[i] != null) {
+    // Update our array through local storeage array.
     while (ourSaveArray[i]) {
       todoIds[i] = ourSaveArray[i];
       i++;
     }
-    console.log(todoIds);
 
+    // Call all todos which saved before from the local storage
     for (let j = 0; j < todoIds.length; j++) {
       const parentHTML = localStorage.getItem(`${todoIds[j]}`);
       const parent = document.createElement("li");
@@ -150,21 +149,4 @@ function localStorageUpload() {
       todoList.append(parent);
     }
   }
-
-  // //li elemanının icerigini local storage'dan aliyoruz
-  // const parentHTML = localStorage.getItem(`${todoIds[index++]}`);
-  // // li elementini olusturun ve icerigini localStorage'dan alinan veri ile doldurun
-  // const parent = document.createElement("li");
-  // parent.innerHTML = parentHTML;
-
-  // //li'ye gerekli style'lari verin
-  // parent.classList.add(
-  //   "mb-3",
-  //   "d-flex",
-  //   "align-items-center",
-  //   "justify-content-between"
-  // );
-
-  // // li'yi sayfaya ekleyin
-  // todoList.append(parent);
 }

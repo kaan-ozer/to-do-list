@@ -5,18 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-      crossorigin="anonymous"
-    />
-
-    <!-- My CSS File -->
-    <link rel="stylesheet" href="assets/CSS/style.css" />
     <!-- Google tag (gtag.js) -->
-    <script
+    <!-- <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-1RK6R1JZRX"
     ></script>
@@ -28,7 +18,7 @@
       gtag("js", new Date());
 
       gtag("config", "G-1RK6R1JZRX");
-    </script>
+    </script> -->
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,18 +28,28 @@
       rel="stylesheet"
     />
 
-    <title>To-Do-List</title>
+    <title>To-Do List</title>
+
+    <!-- CSS BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+
+    <!-- My CSS File -->
+    <link rel="stylesheet" href="assets/CSS/style.css" />
   </head>
+
   <body onload="localStorageUpload()">
     <div class="container">
       <div class="row justify-content-center">
-        <div
-          class="col-11 col-sm-10 col-md-8 col-lg-4 d-flex align-items-center"
-          style="height: 100vh"
-        >
+        <div class="col-11 col-sm-10 col-md-8 col-lg-4">
+          <!-- CARD START -->
           <div class="card my-card-styles">
             <div class="card-body p-5">
-              <!-- card exit -->
+              <!-- SETTINGS START -->
               <div class="row mb-5">
                 <div class="col-12">
                   <svg
@@ -68,7 +68,7 @@
                   </svg>
                 </div>
               </div>
-              <!-- To-Do -->
+              <!-- To-Do AREA START-->
               <div class="row mb-5 todo-area-adjustment">
                 <div class="col-12">
                   <h5 class="card-title mb-5 fw-bold" style="color: #c471f5">
@@ -77,6 +77,7 @@
                   <ul id="todoList" class="ps-0">
                     <li class="mb-4">
                       <input
+                        maxlength="28"
                         type="text"
                         class="p-2"
                         id="todoAddArea"
@@ -87,12 +88,13 @@
                 </div>
               </div>
 
-              <!-- add button -->
+              <!-- ADD BTN START-->
               <div class="row">
                 <div class="col-12 text-center">
                   <a
                     class="plus-icon-anchor btn p-1 p-md-3 border rounded-pill text-center"
                   >
+                    <!-- PLUS ICON SVG -->
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -112,11 +114,11 @@
               </div>
             </div>
           </div>
+          <!-- CARD END -->
         </div>
       </div>
     </div>
 
-    <!-- test -->
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
