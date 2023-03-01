@@ -98,3 +98,9 @@ ul li:first-child {
 }
 
 /* ********************************************* */
+
+.plus-icon-anchor:hover,
+.plus-icon-anchor:active {
+  background-color: #fa71cd !important;
+  transition: all 0.5s ease-in-out;
+}
