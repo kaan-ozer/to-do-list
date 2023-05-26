@@ -1,4 +1,4 @@
-#To Do List
+# To Do List
 
 I made a fully responsive small todo project with HTML,CSS,Bootstrap,JS. I utilized the local storage to save the changes.
 You can also check the website and give me a feedback! https://lnkd.in/dh4G6CyU
